@@ -1,0 +1,23 @@
+plugins {
+    id 'org.jetbrains.kotlin.jvm' version '1.2.21'
+}
+
+repositories {
+    mavenLocal()
+    jcenter()
+    maven {
+        url "http://dl.bintray.com/kyonifer/maven"
+    }
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'org.jetbrains.kotlin', name: 'kotlin-stdlib-jdk8'
+
+    compile group: 'koma', name: 'core', version: '0.11'
+    // Optional, uses EJML's optimized routines for matrix operations
+    compile group: 'koma', name: 'backend-matrix-ejml', version: '0.11'
+
+    testCompile 'org.jetbrains.kotlin:kotlin-test'
+    testCompile 'org.jetbrains.kotlin:kotlin-test-junit'
+}

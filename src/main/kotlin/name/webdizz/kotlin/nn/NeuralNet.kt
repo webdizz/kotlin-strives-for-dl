@@ -6,12 +6,12 @@ import koma.matrix.Matrix
 
 class NeuralNet(private val iterationsNum: Int = 1_000_000, private val printEveryIteration: Int = 50_000) {
 
-    var syn0 = 2 * randn(3, 4, 1) - 1
-    var syn1 = 2 * randn(4, 1, 1) - 1
+    private var syn0 = 2 * randn(3, 4, 1) - 1
+    private var syn1 = 2 * randn(4, 1, 1) - 1
 
     fun train(X: Matrix<Double>, y: Matrix<Double>) {
         for (i in 1..iterationsNum) {
-            // start network
+            // start network training
             val l0 = X
 
             val l1 = sigmoid(l0 * syn0)
@@ -25,11 +25,12 @@ class NeuralNet(private val iterationsNum: Int = 1_000_000, private val printEve
             val l1Error = l2Delta * syn1.T
             val l1Delta = l1Error * sigmoidDx(l1)
 
+            // update weights
             syn1 += l1.T * l2Delta
             syn0 += l0.T * l1Delta
 
             if (i % printEveryIteration == 0) {
-                println("Error ${mean(abs(l2Error))} ${i}")
+                println("==>Mean error ${mean(abs(l2Error))} per input:\n${l2Error} on iteration ${i}")
             }
         }
     }

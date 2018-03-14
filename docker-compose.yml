@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  beakerx:
+    image: beakerx/beakerx:0.13.0
+    volumes:
+     - .:/jupyter-notebooks
+    ports:
+      - 8888:8888
+    command: start-notebook.sh --notebook-dir=/jupyter-notebooks

@@ -9,7 +9,7 @@ class NeuralNet(private val epochs: Int = 10_000, private val printEvery: Int = 
     private val seed = setSeed(1)
     private var syn0 = 2 * rand(3, 4) - 1
     private var syn1 = 2 * rand(4, 1) - 1
-    private val bias = 0.0
+    private val bias = 1.0
 
     fun train(x: Matrix<Double>, y: Matrix<Double>) {
         for (i in 1..epochs) {

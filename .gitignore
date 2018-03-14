@@ -31,3 +31,11 @@ hs_err_pid*
 .idea
 *.iml
 out
+
+.Trash-*
+.classpath
+.project
+.settings
+bin/
+.ipynb_checkpoints
+*~

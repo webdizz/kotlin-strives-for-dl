@@ -32,7 +32,7 @@ class NeuralNet(private val epochs: Int = 10_000, private val printEvery: Int = 
             syn0 += l0.T * l1Delta
 
             if (i % printEvery == 0) {
-                println("==>Error ${mean(abs(l2Error))}")
+                println("Error: ${mean(abs(l2Error))}")
             }
         }
     }

@@ -16,4 +16,5 @@ dependencies {
     compile group: 'koma', name: 'backend-matrix-ejml', version: '0.11'
 
     testCompile 'org.jetbrains.kotlin:kotlin-test'
+    testCompile 'org.jetbrains.kotlin:kotlin-test-junit'
 }

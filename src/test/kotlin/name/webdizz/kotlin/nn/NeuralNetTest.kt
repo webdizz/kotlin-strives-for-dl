@@ -2,7 +2,7 @@ package name.webdizz.kotlin.nn
 
 import koma.end
 import koma.mat
-import org.junit.Test
+import kotlin.test.Test
 import kotlin.test.assertEquals
 
 class NeuralNetTest {

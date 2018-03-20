@@ -15,6 +15,7 @@ dependencies {
     compile group: 'koma', name: 'core', version: '0.11'
     compile group: 'koma', name: 'backend-matrix-ejml', version: '0.11'
 
+    // for Komputation based example
     compile(group: 'com.komputation', name: 'komputation', version: '0.12.5') {
         exclude group: 'org.jcuda'
     }

@@ -1,10 +1,10 @@
-package name.webdizz.kotlin.nn
+package name.webdizz.kotlin.dnn
 
 import koma.*
 import koma.extensions.*
 import koma.matrix.Matrix
 
-class NeuralNet(private val epochs: Int = 10_000, private val printEvery: Int = 1_000) {
+class KomaNet(private val epochs: Int = 10_000, private val printEvery: Int = 1_000) {
 
     private val seed = setSeed(1)
     private var syn0 = 2 * rand(3, 4) - 1

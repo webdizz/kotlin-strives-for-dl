@@ -1,21 +1,21 @@
-package name.webdizz.kotlin.nn
+package name.webdizz.kotlin.dnn
 
 import koma.end
 import koma.mat
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
-class NeuralNetTest {
+class KomaNetTest {
 
     @Test
-    fun shouldUseNeuralNet() {
+    fun shouldTrainNeuralNet() {
         val x = mat[0, 0, 1 end
                 0, 1, 1 end
                 1, 0, 1 end
                 1, 1, 1]
         val y = mat[0, 1, 1, 0].T
 
-        val nn = NeuralNet()
+        val nn = KomaNet()
         nn.train(x, y)
 
         assertEquals(1, nn.test(mat[0, 1, 1]))

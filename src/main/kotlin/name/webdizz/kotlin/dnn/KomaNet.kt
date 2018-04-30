@@ -16,15 +16,23 @@ class KomaNet(private val epochs: Int = 10_000, private val printEvery: Int = 1_
             // start network training
             val l0 = x
 
+            // input times weight add a bias than activate
             val l1 = activate(l0 * syn0 + bias)
             val l2 = activate(l1 * syn1 + bias)
 
             // resolve errors to backpropagate
+
+            // what is a difference between expected and predicted values
             val l2Error = y - l2
+
+            // find out a gradient/slope of a function we're trying to learn for each new output and scale it by our confidence (error)
             val l2Delta = l2Error emul activateDx(l2)
 
             //l1 layer
+            // find out how weights of hidden layer were responsible in error of upper layer
             val l1Error = l2Delta * syn1.T
+
+            // find out a gradient/slope of a function we're trying to learn for each new output  taking into account responsibility of the hidden layer and scale it by the responsibility of hidden layer in final error
             val l1Delta = l1Error emul activateDx(l1)
 
             // update weights

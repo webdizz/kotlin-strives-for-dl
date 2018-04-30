@@ -22,5 +22,6 @@ class KomaNetTest {
         assertEquals(0, nn.test(mat[0, 0, 1]))
         assertEquals(1, nn.test(mat[1, 0, 1]))
         assertEquals(0, nn.test(mat[1, 1, 1]))
+        assertEquals(1, nn.test(mat[1, 1, 0]))
     }
 }

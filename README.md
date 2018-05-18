@@ -5,6 +5,8 @@ Through the code [Koma](http://koma.kyonifer.com/) is used as a scientific compu
 
 There are also an example with usage of [Komputation](https://github.com/aisummary/komputation) as a comprehensive neural network framework also written in [Kotlin](http://kotlinlang.org/).   
 
+![3 input XOR](3xor.jpg)
+
 Usage
 ===========
 

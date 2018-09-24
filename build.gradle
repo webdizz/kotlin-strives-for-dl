@@ -1,5 +1,5 @@
 plugins {
-    id 'org.jetbrains.kotlin.jvm' version '1.2.41'
+    id 'org.jetbrains.kotlin.jvm' version '1.2.71'
 }
 
 repositories {
@@ -12,8 +12,7 @@ repositories {
 }
 
 dependencies {
-    compile group: 'koma', name: 'core', version: '0.11'
-    compile group: 'koma', name: 'backend-matrix-ejml', version: '0.11'
+    compile group: 'com.kyonifer', name: 'koma-core-ejml', version: '0.12'
 
     // for Komputation based example
     compile(group: 'com.komputation', name: 'komputation', version: '0.12.5') {

@@ -5,6 +5,11 @@ Through the code [Koma](http://koma.kyonifer.com/) is used as a scientific compu
 
 There are also an example with usage of [Komputation](https://github.com/aisummary/komputation) as a comprehensive neural network framework also written in [Kotlin](http://kotlinlang.org/).   
 
+Goal
+===========
+
+The goal of this repository code is to demonstrate how *3 input XOR* (image below) operation can be solved with simple implementation of [Artificial Neural Network](https://en.wikipedia.org/wiki/Artificial_neural_network).
+
 ![3 input XOR](3xor.jpg)
 
 Usage

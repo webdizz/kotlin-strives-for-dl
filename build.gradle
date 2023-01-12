@@ -1,24 +1,31 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 plugins {
-    id 'org.jetbrains.kotlin.jvm' version '1.2.71'
+    id 'org.jetbrains.kotlin.jvm' version '1.7.22'
 }
 
+group = 'name.webdizz'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = JavaVersion.VERSION_17.toString()
+
 repositories {
-    mavenLocal()
-    jcenter()
-    maven {
-        url "http://dl.bintray.com/kyonifer/maven"
-    }
     mavenCentral()
 }
 
 dependencies {
-    compile group: 'com.kyonifer', name: 'koma-core-ejml', version: '0.12'
+    implementation "org.jetbrains.kotlinx:multik-core:0.2.0"
+    implementation "org.jetbrains.kotlinx:multik-default:0.2.0"
 
-    // for Komputation based example
-    compile(group: 'com.komputation', name: 'komputation', version: '0.12.5') {
-        exclude group: 'org.jcuda'
+    testImplementation 'org.jetbrains.kotlin:kotlin-test'
+}
+
+tasks.withType(KotlinCompile) {
+    kotlinOptions {
+        freeCompilerArgs = ['-Xjsr305=strict']
+        jvmTarget = JavaVersion.VERSION_17.toString()
     }
+}
 
-    testCompile 'org.jetbrains.kotlin:kotlin-test'
-    testCompile 'org.jetbrains.kotlin:kotlin-test-junit'
+tasks.named('test') {
+    useJUnitPlatform()
 }

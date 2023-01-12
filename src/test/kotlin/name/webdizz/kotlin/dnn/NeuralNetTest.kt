@@ -2,7 +2,9 @@ package name.webdizz.kotlin.dnn
 
 import org.jetbrains.kotlinx.multik.api.mk
 import org.jetbrains.kotlinx.multik.api.ndarray
+import org.jetbrains.kotlinx.multik.ndarray.data.get
 import kotlin.test.Test
+import kotlin.test.assertTrue
 
 class NeuralNetTest {
 
@@ -20,6 +22,9 @@ class NeuralNetTest {
         val net = NeuralNet(10_000, 1000);
         val res = net.train(x, y)
 
-        println(res)
+        assertTrue(res[0][0] < 0.5)
+        assertTrue(res[1][0] > 0.5)
+        assertTrue(res[2][0] > 0.5)
+        assertTrue(res[3][0] < 0.5)
     }
 }

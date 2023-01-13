@@ -15,7 +15,7 @@ class NeuralNet(private val epochs: Int = 10_000, private val printEvery: Int = 
     private val syn1 = 2.0 * mk.rand(4, 1) - 1.0
 
     fun train(x: NDArray<Double, D2>, y: NDArray<Double, D2>): NDArray<Double, D2> {
-        var out: NDArray<Double, D2> = mk.zeros(4, 1)
+        var pred: NDArray<Double, D2> = mk.zeros(4, 1)
         for (i in 1..epochs) {
             val l0 = x
             val l1 = activate(l0.dot(syn0))
@@ -28,7 +28,7 @@ class NeuralNet(private val epochs: Int = 10_000, private val printEvery: Int = 
             val l2d = l2e * activateDx(l2)
 
             // find out how weights of hidden layer were responsible in error of output layer
-            val l1e = l2d dot syn1.reshape(1, 4)
+            val l1e = l2d dot syn1.transpose()
 
             // find out a gradient/slope of a function we're trying to learn for each new output
             // taking into account responsibility of the hidden layer and scale it by the responsibility of hidden layer in final error
@@ -37,20 +37,16 @@ class NeuralNet(private val epochs: Int = 10_000, private val printEvery: Int = 
             syn0 += l0.transpose() dot l1d
             syn1 += l1.transpose() dot l2d
             if (i == epochs) {
-                out = l2
+                pred = l2
             }
             if (i % printEvery == 0) {
                 println("Error: ${l2e.transpose()}")
             }
         }
-        return out
+        return pred
     }
 
-    private fun activate(x: NDArray<Double, D2>): NDArray<Double, D2> {
-        return 1.0 / (1.0 + (-x).exp())
-    }
+    private fun activate(x: NDArray<Double, D2>): NDArray<Double, D2> = 1.0 / (1.0 + (-x).exp())
 
-    private fun activateDx(x: NDArray<Double, D2>): NDArray<Double, D2> {
-        return x * (1.0 - x)
-    }
+    private fun activateDx(x: NDArray<Double, D2>): NDArray<Double, D2> = x * (1.0 - x)
 }
